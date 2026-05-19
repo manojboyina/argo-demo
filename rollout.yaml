@@ -5,12 +5,6 @@ metadata:
 spec:
   replicas: 2
 
-  strategy:
-    blueGreen:
-      activeService: echo-active
-      previewService: echo-preview
-      autoPromotionEnabled: false
-
   selector:
     matchLabels:
       app: echo
@@ -24,6 +18,12 @@ spec:
       - name: echo
         image: hashicorp/http-echo
         args:
-        - "-text=GREEN VERSION"
+        - "-text=VERSION 1"
         ports:
         - containerPort: 5678
+
+  strategy:
+    blueGreen:
+      activeService: echo-active
+      previewService: echo-preview
+      autoPromotionEnabled: false
