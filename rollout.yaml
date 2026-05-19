@@ -29,7 +29,6 @@ spec:
     #   previewService: echo-preview
     #   autoPromotionEnabled: false
     canary:
-      autoPromotionEnabled: false
       stableService: echo-stable 
       canaryService: echo-canary
       steps:
