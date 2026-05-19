@@ -19,7 +19,7 @@ spec:
       - name: echo
         image: hashicorp/http-echo
         args:
-        - "-text=VERSION 9"
+        - "-text=VERSION 10"
         ports:
         - containerPort: 5678
 
