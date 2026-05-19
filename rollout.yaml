@@ -19,12 +19,25 @@ spec:
       - name: echo
         image: hashicorp/http-echo
         args:
-        - "-text=VERSION 4"
+        - "-text=VERSION 5"
         ports:
         - containerPort: 5678
 
   strategy:
-    blueGreen:
-      activeService: echo-active
-      previewService: echo-preview
-      autoPromotionEnabled: false
+    # blueGreen:
+    #   activeService: echo-active
+    #   previewService: echo-preview
+    #   autoPromotionEnabled: false
+    canary:
+      stableService: echo-stable 
+      canaryService: echo-canary
+      steps:
+      - setWeight: 25
+      - pause:
+          duration: 30s
+
+      - setWeight: 50
+      - pause:
+          duration: 30s
+
+      - setWeight: 100
