@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: echo-rollout
 spec:
-  replicas: 2
+  replicas: 4
   revisionHistoryLimit: 5
 
   selector:
@@ -19,7 +19,7 @@ spec:
       - name: echo
         image: hashicorp/http-echo
         args:
-        - "-text=VERSION 6"
+        - "-text=VERSION 7"
         ports:
         - containerPort: 5678
 
