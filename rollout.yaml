@@ -19,7 +19,7 @@ spec:
       - name: echo
         image: hashicorp/http-echo
         args:
-        - "-text=VERSION 8"
+        - "-text=VERSION 9"
         ports:
         - containerPort: 5678
 
@@ -33,6 +33,7 @@ spec:
       stableService: echo-stable 
       canaryService: echo-canary
       steps:
+      - pause: {}
       - setWeight: 25
       - pause:
           duration: 30s
